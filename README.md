@@ -4,7 +4,7 @@ This project was created to demonstrate basic maps operations with Mapbox (https
 
 ## `json-server -- watch apartments_data.json`
 
-to run local json-server with some data
+to run local json-server with some data from src directory
 
 ## `npm start`
 
