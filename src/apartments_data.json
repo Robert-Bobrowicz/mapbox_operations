@@ -1,0 +1,39 @@
+{
+  "apartments": [
+    {
+      "id": "ap_1",
+      "name": "Rydygiera Sunny Robert's Apartment",
+      "coordinates": [52.260415, 20.987381]
+    },
+    {
+      "id": "ap_2",
+      "name": "Sky View Robert's Apartment",
+      "coordinates": [52.254449, 20.984849]
+    },
+    {
+      "id": "ap_3",
+      "name": "Pawia Robert's Apartment",
+      "coordinates": [52.247764, 20.994078]
+    },
+    {
+      "id": "ap_4",
+      "name": "Old Town Piwna Robert's Apartment",
+      "coordinates": [52.248661, 21.012248]
+    },
+    {
+      "id": "ap_5",
+      "name": "Karmelicka Robert's Apartment",
+      "coordinates": [52.244505, 20.994407]
+    },
+    {
+      "id": "ap_6",
+      "name": "City Center North Robert's Apartment",
+      "coordinates": [52.242057, 20.999940]
+    },
+    {
+      "id": "ap_7",
+      "name": "Dobra Robert's Apartment",
+      "coordinates": [52.244589, 21.020975]
+    }
+  ]
+}
