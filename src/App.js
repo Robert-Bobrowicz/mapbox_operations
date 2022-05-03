@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
-import ReactMapGL, {Marker} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 
 function App() {
     const JSON_FILE = "http://localhost:3000/apartments";
@@ -14,6 +14,8 @@ function App() {
         width: '100vw',
         height: '100vh'
     };
+    const [selectedApartment, setSelectedApartment] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
 
 
     useEffect(() => {
@@ -27,6 +29,11 @@ function App() {
                 console.log(error);
             });
     }, [])
+
+    useEffect(() => {
+        console.log(selectedApartment);
+        console.log(showPopup);
+    }, [selectedApartment, showPopup]);
 
 
   return (
@@ -56,15 +63,34 @@ function App() {
                     latitude={apartment.coordinates[0]}
                     longitude={apartment.coordinates[1]}
                 >
-                    <img
-                        src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
-                        alt = "apartment icon"
-                        width = {"25px"}
-                        height = {"25px"}
-                    />
-                    <div>{apartment.name}</div>
+                    <button
+                        className = 'icon-btn'
+                        onClick = {(e) => {
+                            e.preventDefault();
+                            setSelectedApartment(apartment);
+                            setShowPopup(true);
+                            console.log('Marker clicked');
+                        }}
+                    >
+                        <img
+                            src = "./icons/location-pin.png"
+                            alt = "apartment icon"
+                        />
+
+                    </button>
+                    <div style={{fontWeight: '550'}}>{apartment.name}</div>
                 </Marker>)
             })}
+
+            { showPopup && (
+                    <Popup
+                        longitude = {selectedApartment.coordinates[1]}
+                        latitude = {selectedApartment.coordinates[0]}
+                        onClose ={(prevState) =>setShowPopup(!prevState)}
+                    >
+                        <div style = {{width: '120px', height: '25px'}}>You are welcome to {selectedApartment.name}</div>
+                    </Popup>)
+            }
         </ReactMapGL>
     </div>
   );
