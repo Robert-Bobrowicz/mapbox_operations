@@ -1,6 +1,8 @@
-import './App.css';
+
 import React, {useEffect, useState} from "react";
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
+import './App.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 function App() {
     const JSON_FILE = "http://localhost:3000/apartments";
@@ -42,7 +44,7 @@ function App() {
             style = {style}
             mapboxAccessToken = {process.env.REACT_APP_MAP_TOKEN}
             initialViewState = {mapViewPort}
-            mapStyle="mapbox://styles/mapbox/streets-v11" //mapbox://styles/mapbox/streets-v9
+            mapStyle= "mapbox://styles/mapbox/streets-v11" //mapbox://styles/mapbox/streets-v9
             onViewportChange = {(newView) => setMapViewPort(newView)}
         >
         <Marker
@@ -86,7 +88,10 @@ function App() {
                     <Popup
                         longitude = {selectedApartment.coordinates[1]}
                         latitude = {selectedApartment.coordinates[0]}
-                        onClose ={(prevState) =>setShowPopup(!prevState)}
+                        anchor="bottom"
+                        closeOnClick={false}
+                        closeOnMove={false}
+                        onClose ={() => setShowPopup(false)}
                     >
                         <div style = {{width: '120px', height: '25px'}}>You are welcome to {selectedApartment.name}</div>
                     </Popup>)
